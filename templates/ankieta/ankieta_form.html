@@ -7,7 +7,7 @@
     </a>
     <div class="row">
         <div class="col-8">
-            <form action="{% url 'ankieta_create' %}" method="post">
+            <form action="{% url 'ankieta_create' %}" method="post" id="create-form">
                 {% csrf_token %}
                 {% for field in form %}
                     <div class="form-group">
@@ -15,10 +15,11 @@
                         {{ field }}
                     </div>
                 {% endfor %}
-                <input type="submit" value="Add" class="btn btn-success"/>
+                <button type="button" id="losuj-kolor" onclick="losujKolor()" class="btn btn-warning">Losuj kolor</button>
                 <a href="{% url 'ankieta_list' %}">
                     <button type="button" class="btn btn-secondary">Powrót</button>
                 </a>
+                <input type="submit" value="Dodaj" class="btn btn-success"/>
             </form>
         </div>
     </div>

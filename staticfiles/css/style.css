@@ -1,3 +1,6 @@
 .table > tbody > tr:nth-child(even) {
-    background-color: #b9b9b9;
+    background-color: #d7d7d7;
+}
+#create-form > div.form-group:hover {
+    background-color: rgba(169, 169, 169, 0.37);
 }
