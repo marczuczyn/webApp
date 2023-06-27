@@ -16,12 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ankieta.views import AnkietaList, AnkietaDetail, AnkietaDelete, AnkietaCreate
+from ankieta.views import AnkietaList, AnkietaDetail, AnkietaDelete, AnkietaCreate, AnkietaEdit
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', AnkietaList.as_view(), name='ankieta_list'),
     path('detail/<int:pk>', AnkietaDetail.as_view(), name='ankieta_detail'),
     path('delete/<int:pk>', AnkietaDelete.as_view(), name='ankieta_delete'),
-    path('create/', AnkietaCreate.as_view(), name='ankieta_create')
+    path('create/', AnkietaCreate.as_view(), name='ankieta_create'),
+    path('edit/<int:pk>', AnkietaEdit.as_view(), name='ankieta_edit')
 ]

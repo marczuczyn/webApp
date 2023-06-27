@@ -21,3 +21,13 @@ class AnkietaCreate(CreateView):
     model = Ankieta
     success_url = reverse_lazy('ankieta_list')
     fields = ['wiek', 'wzrost', 'plec', 'kolor']
+
+
+class AnkietaEdit(UpdateView):
+    model = Ankieta
+    # success_url = reverse_lazy('ankieta_detail')
+    fields = ['wiek', 'wzrost', 'plec', 'kolor']
+    template_name = 'ankieta/ankieta_edit.html'
+
+    def get_success_url(self):
+        return reverse_lazy('ankieta_detail', kwargs={'pk': self.kwargs['pk']})

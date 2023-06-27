@@ -16,6 +16,7 @@
                     <th>Kolor</th>
                     <th>Utworzono</th>
                     <th>Zmodyfikowano</th>
+                    <th>Edytuj</th>
                     <th>Usuń</th>
                 </tr>
                 </thead>
@@ -27,6 +28,9 @@
                     <td>{{ object.get_kolor_display }}</td>
                     <td>{{ object.created_at|date:"d.m.Y H:i" }}</td>
                     <td>{{ object.updated_at|date:"d.m.Y H:i" }}</td>
+                    <td><a href="{% url 'ankieta_edit' object.id %}">
+                        <button type="button" class="btn btn-info btn-sm">Edytuj</button>
+                    </a></td>
                     <td><a href="{% url 'ankieta_delete' object.id %}">
                         <button type="button" class="btn btn-danger btn-sm">Delete</button>
                     </a></td>
