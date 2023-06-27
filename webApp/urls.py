@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from ankieta.views import AnkietaList
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', AnkietaList.as_view(), name='ankieta_list'),
 ]

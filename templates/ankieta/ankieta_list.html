@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        {% if object_list %}
+            <div class="col-8">
+                <table class="table">
+                    <thead class="thead">
+                    <tr>
+                        <th>Wiek</th>
+                        <th>Wzrost</th>
+                        <th>Płeć</th>
+                        <th>Kolor</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for object in object_list %}
+                        <tr>
+                            <td>{{ object.wiek }}</td>
+                            <td>{{ object.wzrost }}</td>
+                            <td>{{ object.get_plec_display }}</td>
+                            <td>{{ object.get_kolor_display }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="col-8">
+                <div class="alert alert-info" role="alert">
+                    Jeszcze nikt nie dodał ankiety, ale możesz być pierwszy.
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
