@@ -6,7 +6,7 @@
         <button type="button" class="btn btn-info btn-sm">Powrót</button>
     </a>
     <div class="row">
-        <div class="col-8">
+        <div class="col-md-4">
             <form action="{% url 'ankieta_create' %}" method="post" id="create-form">
                 {% csrf_token %}
                 {% for field in form %}

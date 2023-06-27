@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Ankieta(models.Model):
@@ -11,8 +12,8 @@ class Ankieta(models.Model):
         ('N', 'Niebieski'),
         ('C', 'Czerwony')
     )
-    wiek = models.PositiveSmallIntegerField()
-    wzrost = models.PositiveSmallIntegerField()
+    wiek = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(150)])
+    wzrost = models.PositiveSmallIntegerField(validators=[MinValueValidator(50), MaxValueValidator(250)])
     plec = models.CharField(max_length=1, choices=PLEC_CHOICES)
     kolor = models.CharField(max_length=1, choices=KOLOR_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
