@@ -11,6 +11,7 @@
                         <th>Wzrost</th>
                         <th>Płeć</th>
                         <th>Kolor</th>
+                        <th>View</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -20,6 +21,9 @@
                             <td>{{ object.wzrost }}</td>
                             <td>{{ object.get_plec_display }}</td>
                             <td>{{ object.get_kolor_display }}</td>
+                            <td><a href="{% url 'ankieta_detail' object.id %}">
+                                <button type="button" class="btn btn-primary btn-sm">Detail</button>
+                            </a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

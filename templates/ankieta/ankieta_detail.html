@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-8">
+            <table class="table">
+                <thead class="thead">
+                <tr>
+                    <th>Wiek</th>
+                    <th>Wzrost</th>
+                    <th>Płeć</th>
+                    <th>Kolor</th>
+                    <th>Utworzono</th>
+                    <th>Zmodyfikowano</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ object.wiek }}</td>
+                    <td>{{ object.wzrost }}</td>
+                    <td>{{ object.get_plec_display }}</td>
+                    <td>{{ object.get_kolor_display }}</td>
+                    <td>{{ object.created_at|date:"d.m.Y H:i" }}</td>
+                    <td>{{ object.updated_at|date:"d.m.Y H:i" }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
