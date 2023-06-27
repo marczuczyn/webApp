@@ -15,3 +15,9 @@ class AnkietaDetail(DetailView):
 class AnkietaDelete(DeleteView):
     model = Ankieta
     success_url = reverse_lazy('ankieta_list')
+
+
+class AnkietaCreate(CreateView):
+    model = Ankieta
+    success_url = reverse_lazy('ankieta_list')
+    fields = ['wiek', 'wzrost', 'plec', 'kolor']

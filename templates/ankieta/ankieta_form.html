@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Create</h3>
+    <a href="{% url 'ankieta_list' %}">
+        <button type="button" class="btn btn-info btn-sm">Powrót</button>
+    </a>
+    <div class="row">
+        <div class="col-8">
+            <form action="{% url 'ankieta_create' %}" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <input type="submit" value="Add" class="btn btn-success"/>
+                <a href="{% url 'ankieta_list' %}">
+                    <button type="button" class="btn btn-secondary">Powrót</button>
+                </a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
