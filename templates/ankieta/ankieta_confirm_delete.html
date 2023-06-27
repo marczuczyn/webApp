@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-1">
+            <a href="{% url 'ankieta_detail' object.id %}">
+                <button type="button" class="btn btn-secondary btn-sm">Anuluj</button>
+            </a>
+        </div>
+        <div class="col-1">
+            <form action="{% url "ankieta_delete" object.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
