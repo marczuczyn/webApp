@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.urls import reverse_lazy, reverse
 
 
 class Ankieta(models.Model):
@@ -25,3 +26,15 @@ class Ankieta(models.Model):
 
     def __str__(self):
         return f"{self.wiek} lat - {self.wzrost}cm - {self.plec}"
+
+    def get_url(self):
+        return reverse_lazy('ankieta_detail', args={'pk': self.pk})
+
+    def serialize(self):
+        return {
+            'wiek': self.wiek,
+            'wzrost': self.wzrost,
+            'plec': self.get_plec_display(),
+            'kolor': self.get_kolor_display(),
+            'view': f'''<a href="/detail/{self.id}"><button type="button" class="btn btn-primary btn-sm">Detail</button></a>'''
+        }

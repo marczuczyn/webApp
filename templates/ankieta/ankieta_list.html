@@ -5,17 +5,18 @@
     <a href="{% url 'ankieta_create' %}">
         <button type="button" class="btn btn-info btn-sm">Dodaj</button>
     </a>
+    <button type="button" id="refresh-button" class="btn btn-warning btn-sm">Refresh</button>
     <div class="row">
         {% if object_list %}
             <div class="col-8">
-                <table class="table">
+                <table data-toggle="table" data-url="data.json" id="table">
                     <thead class="thead">
                     <tr>
-                        <th>Wiek</th>
-                        <th>Wzrost</th>
-                        <th>Płeć</th>
-                        <th>Kolor</th>
-                        <th>View</th>
+                        <th data-field="wiek">Wiek</th>
+                        <th data-field="wzrost">Wzrost</th>
+                        <th data-field="plec">Płeć</th>
+                        <th data-field="kolor">Kolor</th>
+                        <th data-field="view">View</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -41,4 +42,18 @@
             </div>
         {% endif %}
     </div>
+{% endblock %}
+
+{% block script %}
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#refresh-button').click(function () {
+                console.log('refresh button click');
+                $.get("{% url 'ankieta_list_json' %}", function (data) {
+                    $('#table').bootstrapTable('load', data['ankieta_list']);
+                });
+            });
+        });
+    </script>
 {% endblock %}
