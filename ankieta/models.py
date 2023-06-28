@@ -1,6 +1,6 @@
-from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.urls import reverse_lazy, reverse
+from django.db import models
+from django.urls import reverse_lazy
 
 
 class Ankieta(models.Model):

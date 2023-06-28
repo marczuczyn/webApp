@@ -2,8 +2,8 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from json_views.views import JSONListView
 
-from .models import Ankieta
 from .forms import AnkietaForm
+from .models import Ankieta
 
 
 class AnkietaList(ListView):
