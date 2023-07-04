@@ -32,9 +32,9 @@ class Ankieta(models.Model):
 
     def serialize(self):
         return {
+            'view': self.pk,
             'wiek': self.wiek,
             'wzrost': self.wzrost,
             'plec': self.get_plec_display(),
-            'kolor': self.get_kolor_display(),
-            'view': f'''<a href="/detail/{self.id}"><button type="button" class="btn btn-primary btn-sm">Detail</button></a>'''
+            'kolor': self.get_kolor_display()
         }

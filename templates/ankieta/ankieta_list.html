@@ -9,28 +9,21 @@
     <div class="row">
         {% if object_list %}
             <div class="col-8">
-                <table data-toggle="table" data-url="data.json" id="table">
-                    <thead class="thead">
+                <table
+                        data-toggle="table"
+                        data-data-field="ankieta_list"
+                        data-response-handler="responseHandler"
+                        data-url="data.json" id="table">
+                    <thead>
                     <tr>
                         <th data-field="wiek">Wiek</th>
                         <th data-field="wzrost">Wzrost</th>
                         <th data-field="plec">Płeć</th>
                         <th data-field="kolor">Kolor</th>
-                        <th data-field="view">View</th>
+                        <th data-field="view" data-formatter="viewFormatter">View</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for object in object_list %}
-                        <tr>
-                            <td>{{ object.wiek }}</td>
-                            <td>{{ object.wzrost }}</td>
-                            <td>{{ object.get_plec_display }}</td>
-                            <td>{{ object.get_kolor_display }}</td>
-                            <td><a href="{% url 'ankieta_detail' object.id %}">
-                                <button type="button" class="btn btn-primary btn-sm">Detail</button>
-                            </a></td>
-                        </tr>
-                    {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -49,11 +42,17 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#refresh-button').click(function () {
-                console.log('refresh button click');
-                $.get("{% url 'ankieta_list_json' %}", function (data) {
-                    $('#table').bootstrapTable('load', data['ankieta_list']);
-                });
+                $('#table').bootstrapTable('refresh');
             });
         });
+
+        function responseHandler(res) {
+            console.log(res);
+            return res['ankieta_list'];
+        }
+
+        function viewFormatter(value, row) {
+            return '<a href="/detail/' + value + '"><button type="button" class="btn btn-primary btn-sm">Detail</button></a>'
+        }
     </script>
 {% endblock %}
